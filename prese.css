@@ -1,0 +1,229 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+
+/* === CONTAINER PRINCIPAL === */
+.explic {
+  position: relative;
+  width: 2010px;
+  height: 950px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.explic .consils {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* === ITEMS === */
+.explic .consils .items {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.7s ease-in-out;
+}
+
+.explic .consils .items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === PREMIER ITEM ACTIF === */
+.explic .consils .items:nth-child(1) {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* === TEXTE INTRO === */
+.explic .consils .items .intro {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  max-width: 45%;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.explic .consils .items:nth-child(1) .intro {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* TITRE, INFO, TEXTE */
+.explic .consils .items .intro .title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3em;
+  margin-bottom: 10px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+}
+
+.explic .consils .items .intro .info {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5em;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.explic .consils .items .intro .deroul {
+    font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 30px;
+  display: inline-block;
+  opacity: 0;
+}
+
+/* === ANIMATION TEXTE DU PREMIER ITEM === */
+.explic .consils .items:nth-child(1) .intro .title,
+.explic .consils .items:nth-child(1) .intro .info,
+.explic .consils .items:nth-child(1) .intro .deroul {
+  animation: showText 0.5s 0.7s ease-in-out forwards;
+}
+
+@keyframes showText {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === BOUTONS DE NAVIGATION === */
+.arrows {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.arrows button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrows button:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* === BOUTON RETOUR SPÉCIAL === */
+#back {
+  width: auto;
+  padding: 0 15px;
+  font-size: 1rem;
+  border-radius: 30px;
+}
+
+/* === ANIMATION NEXT === */
+.explic.next .consils .items:nth-child(1) {
+  animation: moveNextCurrent 0.8s forwards;
+}
+.explic.next .consils .items:nth-child(2) {
+  animation: moveNextNext 0.8s forwards;
+}
+
+@keyframes moveNextCurrent {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes moveNextNext {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === ANIMATION PREV === */
+.explic.prev .consils .items:nth-child(1) {
+  animation: movePrevCurrent 0.8s forwards;
+}
+.explic.prev .consils .items:last-child {
+  animation: movePrevPrev 0.8s forwards;
+}
+
+@keyframes movePrevCurrent {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes movePrevPrev {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .explic {
+    width: 95%;
+    height: 450px;
+  }
+
+  .explic .consils .items .intro {
+    bottom: 30px;
+    left: 20px;
+    max-width: 70%;
+  }
+
+  .explic .consils .items .intro .title {
+    font-size: 1.5rem;
+  }
+
+  .explic .consils .items .intro .info {
+    font-size: 0.9rem;
+  }
+
+  .explic .consils .items .intro .deroul {
+    font-size: 0.8rem;
+  }
+}
